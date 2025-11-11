@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ślub – Madzia & Bartek</title>
+  <meta name="description" content="Strona ślubna Madzi i Bartka – informacje o ceremonii, przyjęciu, galeria i wskazówki dla gości." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6fbff; /* baby blue tone */
+      --paper:#ffffff;
+      --ink:#2c2c2c;
+      --muted:#6b6b6b;
+      --brand:#9ecff3; /* lighter baby-blue */
+      --brand-dark:#4a98c5;
+      --accent:#e9f6ff;
+      --shadow:0 14px 30px rgba(0,0,0,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg)}
+    a{color:var(--brand-dark);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+
+    /* NAVBAR */
+    .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));backdrop-filter:blur(6px);border-bottom:1px solid rgba(74,152,197,.06)}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:12px 20px}
+    .brand{font-family:"Playfair Display", serif;font-weight:700;font-size:20px;letter-spacing:.5px}
+    .brand span{color:var(--brand-dark)}
+    .menu{display:flex;gap:12px;flex-wrap:wrap}
+    .menu a{padding:8px 12px;border-radius:999px;font-weight:600}
+    .menu a:hover{background:var(--accent)}
+
+    /* HERO */
+    .hero{position:relative;display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:56px 16px 40px;background:radial-gradient(800px 300px at 50% -10%, rgba(158,207,243,.25), transparent), linear-gradient(180deg,#fff, #f7fbff);text-align:center}
+    .hero__inner{max-width:1100px;margin:0 auto}
+    .hero h1{font-family:"Playfair Display", serif;font-size:44px;line-height:1.05;margin:6px 0 4px;color:var(--brand-dark)}
+    .hero p{margin:0 auto;color:var(--muted);max-width:780px;font-size:18px}
+    .hero__photo{margin:18px auto;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);max-width:920px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--paper);border-radius:999px;padding:8px 14px;box-shadow:0 6px 20px rgba(74,152,197,.06);margin-bottom:6px}
+    .date{font-weight:700;color:var(--brand-dark)}
+
+    /* SECTIONS */
+    section{padding:48px 16px}
+    .wrap{max-width:1100px;margin:0 auto}
+    h2{font-family:"Playfair Display", serif;font-size:30px;margin:0 0 18px;color:var(--brand-dark)}
+    .card{background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(74,152,197,.06)}
+
+    /* STORY */
+    .story{display:grid;grid-template-columns:1fr;gap:16px}
+    .timeline{display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:14px}
+    .dot{width:12px;height:12px;border-radius:999px;background:var(--brand-dark);margin-top:8px}
+    .step h3{margin:0;font-size:18px;color:var(--brand-dark)}
+    .step p{margin:4px 0 0;color:var(--muted)}
+
+    /* DETAILS */
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .detail{padding:18px}
+    .detail h3{margin:0 0 6px;color:var(--brand-dark)}
+    .detail p{margin:0 0 8px;color:var(--muted)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid rgba(74,152,197,.08)}
+
+    /* SCHEDULE */
+    .schedule{display:grid;gap:10px}
+    .sched-item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;border:1px solid rgba(74,152,197,.05);background:linear-gradient(180deg,#fff,#fbfeff)}
+    .time{min-width:70px;font-weight:700;color:var(--brand-dark)}
+
+    /* MAPS */
+    .maps{display:grid;gap:12px}
+    .map-card{overflow:hidden;border-radius:12px}
+    .map-embed{width:100%;height:320px;border:0}
+
+    /* GALLERY TIMELINE */
+    .gallery-timeline{display:grid;gap:18px}
+    .gt-item{display:grid;grid-template-columns:1fr;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#f9feff);border:1px solid rgba(74,152,197,.04)}
+    .gt-row{display:flex;gap:14px;align-items:center}
+    .gt-photo{width:160px;height:120px;flex-shrink:0;border-radius:10px;overflow:hidden;background:#eaf9ff;display:grid;place-items:center}
+    .gt-photo img{width:100%;height:100%;object-fit:cover}
+    .gt-meta{color:var(--muted)}
+
+    /* FAQ */
+    .faq{display:grid;gap:10px}
+    .faq-item{padding:12px;border-radius:12px;border:1px solid rgba(74,152,197,.06);background:#fff}
+
+    /* CONTACT */
+    .contact-cards{display:grid;grid-template-columns:1fr;gap:12px}
+    .contact-cards .card{padding:14px}
+
+    footer{padding:26px 16px;text-align:center;color:#6b6b6b}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(10px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);z-index:200;opacity:0;pointer-events:none;transition:opacity .18s}
+    .lightbox.open{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:92%;max-height:86%;border-radius:10px}
+
+    /* RESPONSIVE */
+    @media (min-width:700px){
+      .story{grid-template-columns:1.2fr .8fr;align-items:center}
+      .grid{grid-template-columns:1fr 1fr}
+      .gallery-timeline{grid-template-columns:repeat(2,1fr)}
+      .contact-cards{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav__inner wrap">
+      <div class="brand">Madzia <span>&</span> Bartek</div>
+      <div class="menu">
+        <a href="#home">Cześć!</a>
+        <a href="#story">Nasza historia</a>
+        <a href="#details">Ceremonia & Wesele</a>
+        <a href="#schedule">Harmonogram</a>
+        <a href="#gallery">Galeria</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / HOME -->
+  <header id="home" class="hero">
+    <div class="hero__inner wrap">
+      <div class="pill">
+        <span class="date">21.08.2026</span>
+        <span>•</span>
+        <span>Pruszków</span>
+      </div>
+      <h1>Cześć! Z tej strony <em>Madzia i Bartek</em> — nie możemy się doczekać! 💍</h1>
+      <p>Przygotowaliśmy tu wszystkie informacje — od mapek i harmonogramu po galerię, gdzie pokażemy naszą historię w zdjęciach. Humor mile widziany.</p>
+
+      <!-- PHOTO: podmień ./images/hero.jpg na swoje zdjęcie -->
+      <div class="hero__photo reveal">
+        <img src="./images/hero.jpg" alt="Madzia i Bartek - sesja narzeczeńska" />
+      </div>
+    </div>
+  </header>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="wrap">
+      <h2>Nasza historia</h2>
+      <div class="story">
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="dot"></div>
+            <div>
+              <h3>Początek — Koszelówka</h3>
+              <p>Nasza historia zaczęła się zupełnie przypadkiem – w liceum, podczas wycieczki integracyjnej do Koszelówki. Trafiliśmy razem do sztafety kajakowej. Bartek wyglądał wtedy zdecydowanie poważniej niż reszta, więc… trochę się go bałam 😅</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="dot"></div>
+            <div>
+              <h3>Poznaliśmy się bliżej zimą</h3>
+              <p>Po tej wycieczce nie utrzymywaliśmy kontaktu od razu — dopiero zimą zaczęliśmy ze sobą więcej rozmawiać, śmiać się i spędzać razem przerwy.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="dot"></div>
+            <div>
+              <h3>16 kwietnia 2019</h3>
+              <p>W naszym szkolnym, ustronnym miejscu zapytałam Bartka: <em>„To co, zaczynamy być razem?”</em> O 11:20 tego dnia zaczęliśmy naszą wspólną drogę. Od tamtej pory minęło kilka lat — trochę dojrzeliśmy, trochę się nauczyliśmy, a najbardziej połączyła nas chęć poznawania świata, dobre jedzenie i wspólne, zabawne chwile.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="dot"></div>
+            <div>
+              <h3>Dzisiaj</h3>
+              <p>16 kwietnia 2019 postanowiliśmy oficjalnie, że „płyniemy razem” już na serio — i tak trwa to do dziś. Teraz czeka nas największa przygoda – wspólne życie jako mąż i żona!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:18px" data-reveal>
+          <h3>Krótko i od serca</h3>
+          <p>Jesteśmy wdzięczni, że możemy świętować to razem z Wami. Przyjdźcie wypoczęci, pełni humoru i z gotowymi ruchami tanecznymi. 🕺💃</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS (Ceremonia + Sala + Maps) -->
+  <section id="details" style="background:linear-gradient(180deg,#f7fbfd,#fff)">
+    <div class="wrap">
+      <h2>Ceremonia i wesele</h2>
+      <div class="grid">
+        <div class="card detail reveal">
+          <h3>Uroczystość</h3>
+          <p>Data: <strong>21.08.2026</strong><br>Miejsce: <strong>Kościół Niepokalanego Poczęcia NMP, Pruszków-Żbików</strong></p>
+          <p>Adres: <strong>ul. 3 Maja 124, 05-800 Pruszków</strong><br>Godzina rozpoczęcia: <strong>15:00</strong></p>
+          <a class="chip" href="https://www.google.com/maps?q=3+Maja+124+05-800+Pruszkow&output=embed" target="_blank" rel="noopener">Otwórz w Mapach Google</a>
+        </div>
+        <div class="card detail reveal">
+          <h3>Przyjęcie weselne</h3>
+          <p>Miejsce: <strong>Rybaczówka (Uroczysko Rybaczówka)</strong></p>
+          <p>Dokładny adres: <strong>ul. Wiślana 32B, 05-480 Otwock Wielki</strong><br>Start: <strong>ok. 17:30</strong></p>
+          <a class="chip" href="https://www.google.com/maps?q=Wi%C5%9Blana+32B+05-480+Otwock+Wielki&output=embed" target="_blank" rel="noopener">Otwórz w Mapach Google</a>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="maps">
+        <div class="map-card card reveal">
+          <h3 style="padding:12px;margin:0">Gdzie jest kościół?</h3>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=3+Maja+124+05-800+Pruszkow&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-card card reveal">
+          <h3 style="padding:12px;margin:0">Gdzie jest sala?</h3>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=Wi%C5%9Blana+32B+05-480+Otwock+Wielki&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <div class="wrap">
+      <h2>Harmonogram dnia</h2>
+      <p class="reveal">Tak wygląda nasz plan — oczywiście z lekkim marginesem na spontaniczność i taneczne szaleństwo 💙</p>
+      <div class="schedule">
+        <div class="sched-item reveal">
+          <div class="time">15:00</div>
+          <div>
+            <strong>Msza święta — ceremonia zaślubin</strong>
+            <div class="muted">Zapraszamy na uroczyste nabożeństwo w Kościele Niepokalanego Poczęcia NMP, Pruszków-Żbików.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">17:30</div>
+          <div>
+            <strong>Wejście na salę i powitanie</strong>
+            <div class="muted">Toast i życzenia dla Młodej Pary — zaczynamy świętowanie!</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">18:00</div>
+          <div>
+            <strong>Pierwsze danie</strong>
+            <div class="muted">Smacznego — lokalne przysmaki i dania przygotowane specjalnie dla Was.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">19:00</div>
+          <div>
+            <strong>Tort</strong>
+            <div class="muted">Słodka chwila refleksji i obowiązkowe zdjęcia z rodzicami.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">19:30</div>
+          <div>
+            <strong>Sesja zdjęciowa</strong>
+            <div class="muted">Krótka sesja, w trakcie której goście mogą dołączyć do pary na zdjęcia.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">21:30</div>
+          <div>
+            <strong>Familiada</strong>
+            <div class="muted">Zabawne gry i konkursy dla rodzin — uśmiech obowiązkowy.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">23:30</div>
+          <div>
+            <strong>Gry i zabawy</strong>
+            <div class="muted">Pomiędzy tańcami — trochę adrenaliny i śmiechu.</div>
+          </div>
+        </div>
+        <div class="sched-item reveal">
+          <div class="time">01:00</div>
+          <div>
+            <strong>Set muzyki klubowej & zabawa z pałkami LED</strong>
+            <div class="muted">Zamykamy wieczór muzyką klubową i efektownym momentem z pałkami LED — przygotujcie się na energetyczne zakończenie!</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:12px;font-style:italic">Godziny są orientacyjne – wesele rządzi się własnym rytmem 😉</p>
+    </div>
+  </section>
+
+  <!-- GALLERY TIMELINE -->
+  <section id="gallery">
+    <div class="wrap">
+      <h2>Nasze zdjęcia — oś czasu</h2>
+      <p class="reveal">Poniżej znajdziecie kilka kluczowych momentów z naszej historii. Więcej zdjęć (i możliwość dodawania Waszych ujęć po weselu) jest w naszym wspólnym folderze na Dysku Google.</p>
+
+      <div class="gallery-timeline">
+        <!-- item 1 -->
+        <div class="gt-item reveal">
+          <div class="gt-row">
+            <div class="gt-photo"><img src="./images/koszelowka.jpg" alt="Koszelowka - sztafeta kajakowa"></div>
+            <div>
+              <h3>Koszelówka — sztafeta kajakowa</h3>
+              <p class="gt-meta">To tam zaczęła się cała historia — trafiliśmy do tej samej sztafety kajakowej i choć Bartek wyglądał poważniej, od tego momentu coś zaczęło się dziać. (Zdjęcie w galerii)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 2 -->
+        <div class="gt-item reveal">
+          <div class="gt-row">
+            <div class="gt-photo"><img src="./images/zima_pierwsze_rozmowy.jpg" alt="Pierwsze rozmowy zimą"></div>
+            <div>
+              <h3>Zima — bliżej siebie</h3>
+              <p class="gt-meta">Po Koszelówce dopiero zimą zaczęliśmy rozmawiać częściej — przerwy, kawa i dużo śmiechu. To wtedy zrozumieliśmy, że warto próbować coś więcej.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 3 -->
+        <div class="gt-item reveal">
+          <div class="gt-row">
+            <div class="gt-photo"><img src="./images/16042019.jpg" alt="16.04.2019"></div>
+            <div>
+              <h3>16.04.2019 — zaczynamy razem</h3>
+              <p class="gt-meta">W naszym ustronnym miejscu w liceum zapytałam Bartka: <em>„To co, zaczynamy być razem?”</em> O 11:20 mieliśmy już swoją historię — od tamtej pory razem.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 4 -->
+        <div class="gt-item reveal">
+          <div class="gt-row">
+            <div class="gt-photo"><img src="./images/sesja_narzeczenska.jpg" alt="Sesja narzeczeńska"></div>
+            <div>
+              <h3>Sesja narzeczeńska</h3>
+              <p class="gt-meta">Nowy rozdział i trochę stresu przed kamerą — ale wyszło pięknie. To zdjęcia, które zobaczycie też na głównej stronie.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="height:12px"></div>
+      <a class="chip" href="https://drive.google.com/drive/folders/1yGDdFMjGeEG2RlJwcuQHJ6idExdzVbaS?usp=drive_link" target="_blank" rel="noopener">Przejdź do wspólnego folderu na Dysku Google (tu wrzucajcie zdjęcia)</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <h2>FAQ — kilka praktycznych informacji</h2>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <strong>Do kiedy potwierdzać przybycie?</strong>
+          <p class="muted">Prosimy o potwierdzenie obecności do <strong>21 lipca 2026</strong> — wystarczy wiadomość na jeden z naszych maili lub SMS na podany numer.</p>
+        </div>
+        <div class="faq-item reveal">
+          <strong>Co w kwestii diety i alergii?</strong>
+          <p class="muted">Jeśli ktoś z Was ma nietolerancję pokarmową lub specjalną dietę (wegetariańska, wegańska, bezglutenowa itp.), uprzejmie prosimy o informację przy potwierdzeniu przybycia — przygotujemy odpowiednie opcje.</p>
+        </div>
+        <div class="faq-item reveal">
+          <strong>Czy będzie kącik dla dzieci?</strong>
+          <p class="muted">Tak — przygotowaliśmy kącik zabaw dla najmłodszych, żeby rodzice też mogli trochę potańczyć i odpocząć.</p>
+        </div>
+        <div class="faq-item reveal">
+          <strong>Co z noclegami?</strong>
+          <p class="muted">Dla części gości zarezerwowaliśmy miejsca noclegowe — osoby, które zostały przypisane do rezerwacji, zostaną poinformowane indywidualnie. Pozostali, którzy potrzebują pomocy w zorganizowaniu noclegu, mogą się do nas zgłosić — chętnie pomożemy. Przykładowe ceny:&nbsp;<br>
+            • pokój 2-osobowy: <strong>200 zł / pokój</strong><br>
+            • pokój 3-osobowy: <strong>150 zł / pokój</strong><br>
+            • pokój 6-osobowy: <strong>300 zł / pokój</strong><br>
+            • śniadanie: <strong>45 zł / osoba</strong>
+          </p>
+        </div>
+        <div class="faq-item reveal">
+          <strong>Prezent i życzenia</strong>
+          <p class="muted">Będziemy wdzięczni za Waszą obecność — jeśli ktoś chce przynieść prezent, preferujemy koperty lub przesłanie informacji o prezentach na życzenie. Prosimy też — jeśli macie życzenia dla Młodej Pary, uprzejmie prosimy, aby składać je <strong>na sali po ceremonii</strong>, a nie przed lub w trakcie nabożeństwa.</p>
+        </div>
+        <div class="faq-item reveal">
+          <strong>Kontakt</strong>
+          <p class="muted">W razie dodatkowych pytań piszcie: <a href="mailto:magdagryzwald@gmail.com">magdagryzwald@gmail.com</a> lub <a href="mailto:prywatnybartuz@gmail.com">prywatnybartuz@gmail.com</a>. W dniu ślubu dostępne będą też telefoniczne numery: <strong>Madzia: +48 572 389 869</strong>, <strong>Bartek: +48 502 090 261</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Kontakt</h2>
+      <div class="contact-cards">
+        <div class="card reveal" style="padding:14px">
+          <h3>Organizacja</h3>
+          <p class="muted">Masz pytanie dotyczące miejsca lub logistyki? Napisz: <a href="mailto:magdagryzwald@gmail.com">magdagryzwald@gmail.com</a> lub <a href="mailto:prywatnybartuz@gmail.com">prywatnybartuz@gmail.com</a></p>
+        </div>
+        <div class="card reveal" style="padding:14px">
+          <h3>Sprawy pilne w dniu wesela</h3>
+          <p class="muted">Telefon kontaktowy: <strong>Madzia: +48 572 389 869</strong><br><strong>Bartek: +48 502 090 261</strong><br>Dzwońcie tylko w sprawach pilnych — odpowiemy jak najszybciej.</p>
+        </div>
+        <div class="card reveal" style="padding:14px">
+          <h3>Social</h3>
+          <p class="muted">Udostępniajcie zdjęcia z hashtagiem: <strong>#MadziaBartek2026</strong> — oraz wrzucajcie swoje zdjęcia do wspólnego folderu na Dysku Google: <a href="https://drive.google.com/drive/folders/1yGDdFMjGeEG2RlJwcuQHJ6idExdzVbaS?usp=drive_link" target="_blank" rel="noopener">Wspólny folder (tu wrzucajcie zdjęcia)</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Made with ❤️ — do zobaczenia 21 sierpnia 2026!
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <img id="lb-img" src="" alt="Zdjęcie" />
+  </div>
+
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Simple gallery lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    document.querySelectorAll('.gt-photo img, .hero__photo img').forEach(el=>{
+      el.style.cursor = 'pointer';
+      el.addEventListener('click',(ev)=>{
+        const src = el.getAttribute('src');
+        lbImg.src = src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+    lightbox.addEventListener('click',()=>{
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('open'); });
+
+    // Mailto quick confirm button (if needed somewhere)
+    function confirmByMail(){
+      const subject = encodeURIComponent('Potwierdzenie obecności na ślubie Madzi i Bartka');
+      const body = encodeURIComponent('Potwierdzam swoją obecność.\nImię i nazwisko: \nLiczba osób: \nDieta / alergie: ');
+      window.location.href = 'mailto:magdagryzwald@gmail.com?subject='+subject+'&body='+body;
+    }
+  </script>
+</body>
+</html>
